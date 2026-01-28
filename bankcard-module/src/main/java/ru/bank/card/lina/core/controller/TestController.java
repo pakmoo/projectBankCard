@@ -21,4 +21,7 @@ public class TestController {
         return this.testService.userToDTO(owner);
     }
 
+    @PostMapping("/saveUser")
+    public User dtoToUser(@RequestBody UserDTO userDTO){return this.testService.dtoToUser(userDTO);}
+
 }

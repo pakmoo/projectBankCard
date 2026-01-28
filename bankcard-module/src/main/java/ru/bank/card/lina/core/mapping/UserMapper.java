@@ -10,5 +10,6 @@ import ru.bank.card.lina.core.entity.User;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
     UserDTO userToDto(User user);
+    User dtoToUser(UserDTO userDTO);
 }
 
