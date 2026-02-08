@@ -1,6 +1,7 @@
 package ru.bank.card.lina.core.dto;
 
 import ru.bank.card.lina.core.entity.Transaction;
+import ru.bank.card.lina.core.entity.enums.CardStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,14 +12,15 @@ public class CardRequest {
     private String cardNumber;
     private LocalDate expirationDate;
     private BigDecimal balance;
-    private List<Transaction> ListTransaction;
+    private CardStatus cardStatus;
+    //private List<Transaction> ListTransaction;
 
-    public CardRequest(long user_id, String cardNumber, LocalDate expirationDate, BigDecimal balance, List<Transaction> listTransaction) {
+    public CardRequest(long user_id, String cardNumber, LocalDate expirationDate, BigDecimal balance, CardStatus cardStatus) {
         this.user_id = user_id;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
         this.balance = balance;
-        ListTransaction = listTransaction;
+        this.cardStatus = cardStatus;
     }
 
     public long getUser_Id() {
@@ -53,11 +55,11 @@ public class CardRequest {
         this.balance = balance;
     }
 
-    public List<Transaction> getListTransaction() {
-        return ListTransaction;
+    public CardStatus getCardStatus() {
+        return cardStatus;
     }
 
-    public void setListTransaction(List<Transaction> listTransaction) {
-        ListTransaction = listTransaction;
+    public void setCardStatus(CardStatus cardStatus) {
+        this.cardStatus = cardStatus;
     }
 }

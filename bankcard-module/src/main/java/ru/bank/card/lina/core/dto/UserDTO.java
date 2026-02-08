@@ -1,4 +1,6 @@
 package ru.bank.card.lina.core.dto;
 
-public record UserDTO (String username, String role){
+import java.util.List;
+
+public record UserDTO (String username, String role, List<CardDTO> cards){
 }

@@ -7,5 +7,5 @@ import ru.bank.card.lina.core.entity.User;
 import java.util.List;
 
 public interface CardRepository extends JpaRepository <Card, Long>  {
-    List<Card> findByOwnerId(Long ownerid);
+    List<Card> findAllByOwnerId(Long ownerid);
 }

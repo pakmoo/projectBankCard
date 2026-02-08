@@ -6,9 +6,9 @@ import org.mapstruct.factory.Mappers;
 import ru.bank.card.lina.core.dto.CardDTO;
 import ru.bank.card.lina.core.entity.Card;
 
-@Mapper
+@Mapper(componentModel = "spring", uses = {TransactionMapper.class})
 public interface CardMapper {
-    CardMapper INSTANCE = Mappers.getMapper(CardMapper.class);
     @Mapping(source = "cardNumber", target = "cardNum")
+    @Mapping(source = "listTransaction", target = "transactions")
     CardDTO cardToCardDTO(Card card);
 }
