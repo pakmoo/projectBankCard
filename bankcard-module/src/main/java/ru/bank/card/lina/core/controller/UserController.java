@@ -1,6 +1,8 @@
 package ru.bank.card.lina.core.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ru.bank.card.lina.core.dto.UserDTO;
+import ru.bank.card.lina.core.dto.UserRequest;
 import ru.bank.card.lina.core.entity.User;
 import ru.bank.card.lina.core.service.UserService;
 
@@ -16,13 +18,13 @@ public class UserController {
     }
 
     @PostMapping
-    public void saveUser(@RequestBody User user){
-        userService.saveUser(user);
+    public UserDTO saveUser(@RequestBody UserRequest userRequest){
+        return userService.dtoToUser(userRequest);
     }
 
     @GetMapping("/{id}")
-    public User findById(@RequestParam Long user_id){
-        return userService.findById(user_id);
+    public UserDTO findById(@RequestParam Long user_id){
+        return userService.userToDTO(user_id);
     }
 
     @DeleteMapping
@@ -31,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> findAll(){
+    public List<UserDTO> findAll(){
         return userService.findAll();
     }
 

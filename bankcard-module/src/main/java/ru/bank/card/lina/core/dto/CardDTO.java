@@ -4,7 +4,8 @@ import ru.bank.card.lina.core.entity.enums.CardStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
-public record CardDTO(String cardNum, CardStatus cardStatus, BigDecimal balance, LocalDate expirationDate) {
+public record CardDTO(String cardNum, CardStatus cardStatus, BigDecimal balance, LocalDate expirationDate, List<TransactionDTO> transactions) {
 
 }

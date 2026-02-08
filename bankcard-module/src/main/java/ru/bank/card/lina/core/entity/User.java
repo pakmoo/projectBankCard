@@ -25,6 +25,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL,
             orphanRemoval = true)
 

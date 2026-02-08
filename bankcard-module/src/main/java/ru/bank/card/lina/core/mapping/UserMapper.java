@@ -4,12 +4,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Repository;
 import ru.bank.card.lina.core.dto.UserDTO;
+import ru.bank.card.lina.core.dto.UserRequest;
 import ru.bank.card.lina.core.entity.User;
 
-@Mapper
+@Mapper(componentModel = "spring", uses = {CardMapper.class})
 public interface UserMapper {
-    UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
-    UserDTO userToDto(User user);
-    User dtoToUser(UserDTO userDTO);
+    //из входных данных в бд
+    User dtoToUser(UserRequest userRequest);
+    //выходящие данные
+    UserDTO userToDTO(User user);
 }
 
