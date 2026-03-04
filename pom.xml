@@ -18,6 +18,8 @@
     <modules>
         <module>security-module</module>
         <module>bankcard-module</module>
+        <module>email-module</module>
+
     </modules>
 
     <properties>
@@ -60,6 +62,15 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+
+
+
+
+
+
+
+
+
     </dependencies>
 
     <build>
