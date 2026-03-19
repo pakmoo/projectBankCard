@@ -2,6 +2,7 @@ package ru.bank.card.lina.core.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.bank.card.lina.core.configuration.KafkaSendTemplates;
 import ru.bank.card.lina.core.dto.TransactionDTO;
 import ru.bank.card.lina.core.dto.TransactionRequest;
 import ru.bank.card.lina.core.entity.Card;
@@ -19,14 +20,16 @@ public class TransactionService {
     TransactionRepository transactionRepository;
     UserService userService;
     TransactionMapper transactionMapper;
+    KafkaSendTemplates kafkaSendTemplates;
 
 
     public TransactionService(CardRepository cardRepository, TransactionRepository transactionRepository,
-                              UserService userService, TransactionMapper transactionMapper) {
+                              UserService userService, TransactionMapper transactionMapper, KafkaSendTemplates kafkaSendTemplates) {
         this.cardRepository = cardRepository;
         this.transactionRepository = transactionRepository;
         this.userService = userService;
         this.transactionMapper = transactionMapper;
+        this.kafkaSendTemplates = kafkaSendTemplates;
     }
 
     public TransactionDTO dtoToTransaction(TransactionRequest transactionRequest){
@@ -67,6 +70,9 @@ public class TransactionService {
 
             cardRepository.save(cardFrom);
             cardRepository.save(cardTo);
+
+            kafkaSendTemplates.sendMyFirstMessage("Снятие с: "+ cardFrom.getCardNumber()) ;
+            kafkaSendTemplates.sendMyFirstMessage("Пополнение "+ transactionRequest.amount());
         }
         else {throw new BalanceIsLessThanAmountExeption();
         }

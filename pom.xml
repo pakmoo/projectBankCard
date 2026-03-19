@@ -19,6 +19,7 @@
         <module>security-module</module>
         <module>bankcard-module</module>
         <module>email-module</module>
+        <module>format-checker</module>
 
     </modules>
 
@@ -33,6 +34,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

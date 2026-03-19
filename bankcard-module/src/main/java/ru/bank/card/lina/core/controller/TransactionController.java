@@ -1,6 +1,6 @@
 package ru.bank.card.lina.core.controller;
 
-import jakarta.validation.constraints.NotNull;
+//import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
